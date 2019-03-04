@@ -53,12 +53,16 @@ function display_form()
   $button.Text = "Verify"
   
   $browse1.Add_Click ({
+  #Get-FileName1
+  Get-Folder1
   $nameOf = $global:pathh1.lastindexOf('\')
   $textBox1.Text = $global:pathh1.SubString($nameOf)
   $global:file1_name = $global:pathh1.SubString($nameOf+1)
   })
   
   $browse2.Add_Click ({
+  #Get-FileName2
+  Get-Folder2
   $nameOf = $global:pathh1.lastindexOf('\')
   $textBox2.Text = $global:pathh2.SubString($nameOf)
   $global:file2_name = $global:pathh2.SubString($nameOf+1)
@@ -75,14 +79,45 @@ function display_form()
  $ret = $Form.ShowDialog()
 }
 
-function Get-FileName {
+function Get-Folder1 {
   [System.Reflection.Assembly]::LoadWithpartialname("System.Windows.Forms") | Out-Null
-  $OpenFileDialog = New-Object System.Windows.Forms.OpenFileDialog
-  $OpenFileDialog.InitialDirectory = $pwd
-  $OpenFileDialog.Multiselect = "true"
-  $OpenFileDialog.Showdialog() | Out-Null
-  $global:pathh1 = $OpenFileDialog.FolderName
+  $FolderName = New-Object System.Windows.Forms.OpenFileDialog
+  $FolderName.rootfolder = "MyComputer'
+  $FolderName.Showdialog() | Out-Null
+  
+  if ($FolderName.Showdialog() -eq "OK") {
+  $global:pathh1 = $FolderName.SelectedPath
+  }
 }
+
+function Get-Folder2 {
+  [System.Reflection.Assembly]::LoadWithpartialname("System.Windows.Forms") | Out-Null
+  $FolderName = New-Object System.Windows.Forms.OpenFileDialog
+  $FolderName.rootfolder = "MyComputer'
+  $FolderName.Showdialog() | Out-Null
+  
+  if ($FolderName.Showdialog() -eq "OK") {
+  $global:pathh2 = $FolderName.SelectedPath
+  }
+}
+
+#function Get-FileName1 {
+#  [System.Reflection.Assembly]::LoadWithpartialname("System.Windows.Forms") | Out-Null
+#  $OpenFileDialog = New-Object System.Windows.Forms.OpenFileDialog
+#  $OpenFileDialog.InitialDirectory = $pwd
+#  $OpenFileDialog.Multiselect = "true"
+#  $OpenFileDialog.Showdialog() | Out-Null
+#  $global:pathh1 = $OpenFileDialog.FolderName
+#}
+#
+#function Get-FileName2 {
+#  [System.Reflection.Assembly]::LoadWithpartialname("System.Windows.Forms") | Out-Null
+#  $OpenFileDialog = New-Object System.Windows.Forms.OpenFileDialog
+#  $OpenFileDialog.InitialDirectory = $pwd
+#  $OpenFileDialog.Multiselect = "true"
+#  $OpenFileDialog.Showdialog() | Out-Null
+#  $global:pathh2 = $OpenFileDialog.FolderName
+#}
 
 display_form
 if ($global:pathh1 -eq $null) {
