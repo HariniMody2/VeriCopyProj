@@ -63,7 +63,25 @@ function display_form()
   $textBox2.Text = $global:pathh2.SubString($nameOf)
   $global:file2_name = $global:pathh2.SubString($nameOf+1)
   })
+  
+  $Form.Controls.Add($button)
+  $Form.Controls.Add($textLabel1)
+  $Form.Controls.Add($textBox1)
+  $Form.Controls.Add($browse1)
+  $Form.Controls.Add($textLabel2)
+  $Form.Controls.Add($textBox2)
+  $Form.Controls.Add($browse2)
  
+ $ret = $Form.ShowDialog()
+}
+
+function Get-FileName {
+  [System.Reflection.Assembly]::LoadWithpartialname("System.Windows.Forms") | Out-Null
+  $OpenFileDialog = New-Object System.Windows.Forms.OpenFileDialog
+  $OpenFileDialog.InitialDirectory = $pwd
+  $OpenFileDialog.Multiselect = "true"
+  $OpenFileDialog.Showdialog() | Out-Null
+  $global:pathh1 = $OpenFileDialog.FolderName
 }
 
 display_form
@@ -80,3 +98,6 @@ if ($global:file_name -eq $null) {
   exit
 }
 
+cd..
+Write-Host "Press any key to exit"
+Read-Host
