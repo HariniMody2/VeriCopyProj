@@ -51,4 +51,20 @@ function display_form()
   $button.Location = New-Object System.Drawing.Size(150,85)
   $button.Size = New-Object System.Drawing.Size(85,23)
   $button.Text = "Verify"
+ 
 }
+
+display_form
+if ($global:pathh1 -eq $null) {
+  Write-Host "Enter Path"
+  exit
+}
+if ($global:pathh2 -eq $null) {
+  Write-Host "Enter Path"
+  exit
+}
+if ($global:file_name -eq $null) {
+  Write-Host "Enter file name here"
+  exit
+}
+
