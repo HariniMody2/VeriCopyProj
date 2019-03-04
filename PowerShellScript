@@ -51,6 +51,18 @@ function display_form()
   $button.Location = New-Object System.Drawing.Size(150,85)
   $button.Size = New-Object System.Drawing.Size(85,23)
   $button.Text = "Verify"
+  
+  $browse1.Add_Click ({
+  $nameOf = $global:pathh1.lastindexOf('\')
+  $textBox1.Text = $global:pathh1.SubString($nameOf)
+  $global:file1_name = $global:pathh1.SubString($nameOf+1)
+  })
+  
+  $browse2.Add_Click ({
+  $nameOf = $global:pathh1.lastindexOf('\')
+  $textBox2.Text = $global:pathh2.SubString($nameOf)
+  $global:file2_name = $global:pathh2.SubString($nameOf+1)
+  })
  
 }
 
