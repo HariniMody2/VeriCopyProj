@@ -1,0 +1,54 @@
+[Reflection.Assembly]::loadwithpartialname("System.Windows.Forms") | Out-Null
+[Reflection.Assembly]::loadwithpartialname("System.Drawing") | Out-Null
+
+$pathh1 = $null
+$pathh2 = $null
+$file1_name = $null
+$file2_name = $null
+
+function display_form() 
+{
+  $Form = New-Object System.Windows.Forms.Form
+  $Form.Height = 150
+  $Form.Width = 400
+  $Form.Text = "VeriCopy_PS"
+  $global:pathh1 = $null
+  $global:pathh2 = $null
+  
+  $Form.StartPosition = [System.Windows.Forms.FormStartPosition]::CenterScreen
+  
+  $textLabel1 = New-Object System.Windows.Forms.Label
+  $textLabel1.Location = New-Object System.Drawing.Size(5,10)
+  $textLabel1.Size = New-Object System.Drawing.Size(70,20)
+  $textLabel1.Text = "Original"
+
+  $textBox1 = New-Object System.Windows.Forms.TextBox
+  $textBox1.Location = New-Object System.Drawing.Size(5,30)
+  $textBox1.Size = New-Object System.Drawing.Size(100,20)
+  $textBox1.Text = " "
+  
+  $browse1 = New-Object System.Windows.Forms.Button
+  $browse1.Location = New-Object System.Drawing.Size(105,10)
+  $browse1.Size = New-Object System.Drawing.Size(80,20)
+  $browse1.Text = "Browse"
+  
+  $textLabel2 = New-Object System.Windows.Forms.Label
+  $textLabel2.Location = New-Object System.Drawing.Size(200,10)
+  $textLabel2.Size = New-Object System.Drawing.Size(70,20)
+  $textLabel2.Text = "Original"
+
+  $textBox2 = New-Object System.Windows.Forms.TextBox
+  $textBox2.Location = New-Object System.Drawing.Size(200,30)
+  $textBox2.Size = New-Object System.Drawing.Size(100,20)
+  $textBox2.Text = " "
+  
+  $browse2 = New-Object System.Windows.Forms.Button
+  $browse2.Location = New-Object System.Drawing.Size(300,30)
+  $browse2.Size = New-Object System.Drawing.Size(80,20)
+  $browse2.Text = "Browse"
+  
+  $button = New-Object System.Windows.Forms.Button
+  $button.Location = New-Object System.Drawing.Size(150,85)
+  $button.Size = New-Object System.Drawing.Size(85,23)
+  $button.Text = "Verify"
+}
