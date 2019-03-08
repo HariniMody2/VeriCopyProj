@@ -82,7 +82,7 @@ function display_form()
 function Get-Folder1 {
   [System.Reflection.Assembly]::LoadWithpartialname("System.Windows.Forms") | Out-Null
   $FolderName = New-Object System.Windows.Forms.OpenFileDialog
-  $FolderName.rootfolder = "MyComputer'
+  $FolderName.rootfolder = "Desktop'
   $FolderName.Showdialog() | Out-Null
   
   if ($FolderName.Showdialog() -eq "OK") {
@@ -93,7 +93,7 @@ function Get-Folder1 {
 function Get-Folder2 {
   [System.Reflection.Assembly]::LoadWithpartialname("System.Windows.Forms") | Out-Null
   $FolderName = New-Object System.Windows.Forms.OpenFileDialog
-  $FolderName.rootfolder = "MyComputer'
+  $FolderName.rootfolder = "Desktop'
   $FolderName.Showdialog() | Out-Null
   
   if ($FolderName.Showdialog() -eq "OK") {
